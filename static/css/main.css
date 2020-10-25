@@ -1,0 +1,10 @@
+body{
+    font-family: 'Lucida Sans';
+}
+
+.login-div{
+    margin: 100px auto;
+    width: 350px;
+    background-color: white;
+    padding: 60px;
+}
