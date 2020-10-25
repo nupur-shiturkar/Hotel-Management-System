@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
-from flask_wtf import Form
+#from flask_wtf import Form
 import os
 
 
