@@ -2,9 +2,16 @@ body{
     font-family: 'Lucida Sans';
 }
 
-.login-div{
+.login-container{
     margin: 100px auto;
     width: 350px;
     background-color: white;
     padding: 60px;
+}
+
+.jumbotron{
+    
+    margin-top: 5%;
+    height: 200px;
+    text-align: center;
 }
