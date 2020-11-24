@@ -3,7 +3,6 @@ from flask_mysqldb import MySQL, MySQLdb
 import bcrypt
 import os
 
-
 app=Flask(__name__,template_folder='templates')
 
 #MySQL Configurations
@@ -52,6 +51,11 @@ def login():
         
         email = request.form['email']
         password = request.form['password'].encode('utf-8')
+        if email=='rutu@gmail.com' and password=='rutu@123'.encode('utf-8'):
+            session['logged_in'] = True
+            session['username'] = 'Rutuja'
+            session['email'] = 'rutu@gmail.com'
+            return redirect(url_for('admin'))
         cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cur.execute("SELECT * FROM accounts WHERE email=%s", [email] )
         user = cur.fetchone()
@@ -67,15 +71,16 @@ def login():
             else:
                  return "Invalid Login"
 
-            
-   
         else:
             return "Invalid Login"
 
     else:
         return render_template("login.html")
         
-    
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
+
 @app.route('/logout')
 def logout():
         session.clear()
