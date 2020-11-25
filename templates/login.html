@@ -3,6 +3,11 @@
 {% block head %}
  
 <title>Login page</title>
+<script>
+    function alertbox(){
+        alert('Logged-in successfully');
+    }
+</script>
 {% endblock %}
 
 {% block body %} 
@@ -16,11 +21,11 @@
 
             <input type="password" class="password" placeholder="Password" name="password" id="password"  >
             <br>
-            <a href="/"><button type="button" class="login-button btn btn-dark sign-up-button">Log In</button></a>
+            <button type="submit" class="login-button btn btn-dark sign-up-button" onclick = "alertbox()">Log In</button>
             <br>
             <a class="forgot-password" href="#">Forgot Password</a>
             <br>
-            <a href="/register"><button type="button" class="register-button login-button btn btn-dark sign-up-button">Register/ Sign Up</button></a> 
+            <a href="/register"><button type="submit" class="register-button login-button btn btn-dark sign-up-button">Register/ Sign Up</button></a> 
 
             </div>
         </div>
