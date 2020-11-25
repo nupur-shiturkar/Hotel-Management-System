@@ -2,19 +2,175 @@
 
 {% block head %}
 
-<title>Home page</title>
+<title>Hotel zone a Hotel and Resturant Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+      <!--meta tags -->
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="keywords" content="Hotel zone Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+         Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+      <script>
+         addEventListener("load", function () {
+         	setTimeout(hideURLbar, 0);
+         }, false);
+         
+         function hideURLbar() {
+         	window.scrollTo(0, 1);
+         }
+      </script>
+      <!--//meta tags ends here-->
+	  <!--booststrap-->
+	  
+      <!-- <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">  -->
+      <!--//booststrap end-->
+      <!-- font-awesome icons -->
+     <!-- <link rel="stylesheet" href="css/fontawesome-all.css"> <!-- Font-Awesome-Icons-CSS -->
+      <!-- //font-awesome icons -->
+	  <!-- <link href="css/simpleLightbox.css" rel='stylesheet' type='text/css' /> -->
+      <!--stylesheets-->
+      <!-- <link href="css/style.css" rel='stylesheet' type='text/css' media="all"> -->
+      <!--//stylesheets-->
+  <!-- <link href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> -->
+   <!-- <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet"> -->
+
 {% endblock %}
 
 {% block body %} 
 {% if session['username'] %}
 <p>You have logged in as {{ session['username'] }}</p>
 {% else %}
-<p>Not login yet</p>
-{% endif %}
-<div class="jumbotron" >
-	<h1>Welcome</h1>
-	
+
+<div class="slider">
+	<div class="callbacks_container">
+		
+		
+				<div class="slider-img1">
+					<div class="dot">
+						<div class="container">
+							<div class="slider_banner_info_w3ls">
+								<h1 class="text-uppercase mb-3">Enjoy the greatest pleasure in our hotel </h1>
+								<p>Etiam vitae augue odio. Ut laoreet ipsum vel ultrices viverra. Donec nisl dolor, mollis vel libero id, 
+										tempor cursus lectus. Vestibulum eu ligula et pharetra efficitur. Maecenas eleifend.</p>
+
+								<a href="single.html" class="read" data-toggle="modal" data-target="#exampleModalCenter" role="button">Read more </a>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			<div class="clearfix"></div>
+		
 </div>
+
+<!-- ROOMS AND RATES -->
+
+<div class="plans-section py-5" id="rooms">
+	<div class="container py-md-3">
+	 <div class="w3-head-all mb-3">
+	<h3>Rooms And Rates</h3>
+  </div>
+		   <div class="priceing-table-main">
+<div class="row">
+	<div class="col-lg-3 col-md-6 col-sm-6 price-grid">
+	   <div class="price-block agile">
+		   <div class="price-gd-top">
+		   <img src="/static/r1.jpg" alt=" " class="img-responsive img-fluid" />
+			   <h4>Deluxe Room</h4>
+		   </div>
+		   <div class="price-gd-bottom">
+				  <div class="price-list">
+					   <ul>
+							   <li><i class="fa fa-star" aria-hidden="true"></i></li>
+							   <li><i class="fa fa-star" aria-hidden="true"></i></li>
+							   <li><i class="fa fa-star" aria-hidden="true"></i></li>
+							   <li><i class="fa fa-star" aria-hidden="true"></i></li>
+							   <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+					   
+						</ul>
+			   </div>
+			   <div class="price-selet">	
+				   <h3><span>Rs.</span>3200</h3>						
+				   <a href="#appointment" class="scroll" >Book Now</a>
+			   </div>
+		   </div>
+	   </div>
+   </div>
+   <div class="col-lg-3 col-md-6 col-sm-6 price-grid ">
+	   <div class="price-block agile">
+		   <div class="price-gd-top">
+		   <img src="/static/r2.jpg" alt=" " class="img-responsive img-fluid" />
+			   <h4>Luxury Room</h4>
+		   </div>
+		   <div class="price-gd-bottom">
+			   <div class="price-list">
+					   <ul>
+					   <li><i class="fa fa-star" aria-hidden="true"></i></li>
+					   <li><i class="fa fa-star" aria-hidden="true"></i></li>
+					   <li><i class="fa fa-star" aria-hidden="true"></i></li>
+					   <li><i class="fa fa-star" aria-hidden="true"></i></li>
+					   <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+				   </ul>
+			   </div>
+			   <div class="price-selet">
+				   <h3><span>Rs.</span>2200</h3>
+				   <a href="#appointment" class="scroll" >Book Now</a>
+			   </div>
+		   </div>
+	   </div>
+   </div>
+   <div class="col-lg-3 col-md-6 col-sm-6 price-grid lost">
+	   <div class="price-block agile">
+		   <div class="price-gd-top">
+		   <img src="/static/r3.jpg" alt=" " class="img-responsive img-fluid" />
+			   <h4>Guest House</h4>
+		   </div>
+		   <div class="price-gd-bottom">
+			   <div class="price-list">
+				   <ul>
+					   <li><i class="fa fa-star" aria-hidden="true"></i></li>
+					   <li><i class="fa fa-star" aria-hidden="true"></i></li>
+					   <li><i class="fa fa-star" aria-hidden="true"></i></li>
+					   <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+					   <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+				   </ul>
+			   </div>
+			   <div class="price-selet">
+				   <h3><span>Rs.</span>1800</h3>
+				   <a href="#appointment" class="scroll" >Book Now</a>
+			   </div>
+		   </div>
+	   </div>
+   </div>
+   <div class="col-lg-3 col-md-6 col-sm-6 price-grid wthree lost">
+	   <div class="price-block agile">
+		   <div class="price-gd-top ">
+			   <img src="/static/r4.jpg" alt=" " class="img-responsive img-fluid" />
+			   <h4>Single Room</h4>
+		   </div>
+		   <div class="price-gd-bottom">
+			   <div class="price-list">
+				   <ul>
+					   <li><i class="fa fa-star" aria-hidden="true"></i></li>
+					   <li><i class="fa fa-star" aria-hidden="true"></i></li>
+					   <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+					   <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+					   <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+				   </ul>
+			   </div>
+			   <div class="price-selet">
+				   <h3><span>Rs.</span> 1500</h3>
+				   <a href="#appointment" class="scroll" >Book Now</a>
+			   </div>
+		   </div>
+	   </div>
+   </div>
+   </div>
+   <div class="clearfix"> </div>
+</div>
+</div>
+</div>
+<!--// rooms & rates -->
+{% endif %}
+
 
 {% endblock %}
    

@@ -6,21 +6,23 @@
 {% endblock %}
 
 {% block body %} 
+<img src="/static/ban4.jpg" height="100%" width="100%">
     <form action="/login" method="POST">  
-        <div class="login-container">
-            <h3>Log-in</h3>
-            <input type="text" placeholder="Email" name="email" id="email" >
+        <div class="login-card">
+            <div class="login-details">
+            <h3 class="login_title">Log-in</h3>
+            <input type="text" class="email" placeholder="Email" name="email" id="email" >
             <br>
 
-            <input type="password" placeholder="Password" name="password" id="password"  >
+            <input type="password" class="password" placeholder="Password" name="password" id="password"  >
             <br>
+            <a href="/"><button type="button" class="login-button btn btn-dark sign-up-button">Log In</button></a>
+            <br>
+            <a class="forgot-password" href="#">Forgot Password</a>
+            <br>
+            <a href="/register"><button type="button" class="register-button login-button btn btn-dark sign-up-button">Register/ Sign Up</button></a> 
 
-            <a href="#">Forgot Password</a>
-            <br>
-
-            <button type="submit" class="loginbtn">Log-in</button>
-            <br>
-            <a href="/register">Register/Sign-up</a>
+            </div>
         </div>
     </form>
 {% endblock %}

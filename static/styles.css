@@ -15,3 +15,296 @@ body{
     height: 200px;
     text-align: center;
 }
+
+
+
+/* LOGIN PAGE */
+
+
+
+.login-card{
+    position: absolute;
+    top: 5rem;
+    right: 4rem;
+    width: 322px;
+    height: 500px;
+    background-color: #FDE6FF;
+    border-radius: 20px;
+}
+
+.login-details{
+    text-align: center;
+}
+
+.login_title{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.email{
+    margin-top: 30px;
+}
+
+.password{
+    margin-top: 32.5px;
+}
+
+.forgot-password{
+    position: relative;
+    top: 10px;
+}
+
+.login-button{
+    margin-top: 8px;
+}
+
+.register-button{
+    color: crimson;
+    color: #fff !important;
+}
+
+
+/* REGISTRATION PAGE */
+
+.registration-page{
+    background-image: url(../static/ser2.jpg) no-repeat 0px 0px;
+    
+}
+
+.registration-details{
+    margin-top: 30px;
+}
+/* NAVIGATION */
+
+.top-nav {
+    position: absolute;
+    z-index: 9;
+    width: 100%;
+    padding: 1em 0;
+}
+.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+    color:#e7272d;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #fff !important;
+    font-size: 17px;
+    margin: 0 .2em;
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    font-weight: 500;
+}
+ul.dropdown-menu a {
+    color: #333;
+    font-size: 17px;
+    padding: 2px 12px;
+    display: block;
+    border: 1px solid transparent;
+}
+.navbar-light .navbar-brand,.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
+        color: #fff;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 5px 20px;
+    position: relative;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+    background: #e7272d;
+}
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+    color: #fff;
+}
+.navbar-light .navbar-brand span {
+    display: block;
+    font-size: 13px;
+    text-align: center;
+    position: absolute;
+    left: 0%;
+    width: 100%;
+    bottom: -50%;
+}
+
+
+/* SLIDER HOME PAGE */
+
+.slider_banner_info_w3ls {
+	padding-top: 24%;
+	width: 75%;
+}
+
+.slider_banner_info_w3ls h4,.slider_banner_info_w3ls h1,.slider_banner_info_w3ls h2 {
+	font-size: 3em;
+	line-height: 1.5em;
+	color: #fff;
+	letter-spacing: 4px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+	font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+.slider_banner_info_w3ls a.read {
+	    color: #fff;
+    font-size: 15px;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    border: 1px solid #e7272d;
+    padding: 13px 20px;
+    background: #e7272d;
+}
+.slider_banner_info_w3ls a.read:hover {
+    background: #2dde98;
+    border: 1px solid #2dde98;
+}
+.dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../images/dott.png)repeat 0px 0px;
+    background-size: 2px;
+    -webkit-background-size: 2px;
+    -moz-background-size: 2px;
+    -o-background-size: 2px;
+    -ms-background-size: 2px;
+}
+
+.slider-img1 {
+    background: url(../static/ban7.jpg) no-repeat 0px 0px;
+    background-size: cover;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	-moz-background-size: cover;
+	-ms-background-size: cover;
+    min-height: 770px; 
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px; 
+}
+
+
+.callbacks_tabs a{
+ visibility: hidden;
+}
+.callbacks_tabs a:after {
+    content: "\f111";
+    font-size: 0;
+    font-family: FontAwesome;
+    visibility: visible;
+    display: block;
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    background: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+}
+.callbacks_here a:after{
+    background: #4dd0e1;
+    border: 2px solid #ffffff;
+}
+a.view i {
+    margin-right: 15px;
+    font-size: 45px;
+    vertical-align: middle;
+}
+a.view {
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 2px;
+    display: inline-block;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.slider_banner_info_w3ls p {
+    font-size: 15px;
+    color: #fff;
+    line-height: 28px;
+    width: 100%;
+    letter-spacing: 1px;
+	margin-bottom: 2em;
+}
+
+/* ROOMS AND RATES */
+
+/*--rooms & rates --*/
+.price-list ul {
+    padding: 0px;
+    list-style: none;
+}
+.price-gd-top {
+    text-align: center;
+    position: relative;
+}
+.price-gd-top h4 {
+    font-size: 1.5em;
+    color: #fff;
+    padding: 0.4em 1em;
+    background: #e7272d;
+    font-weight: 300;
+}
+.price-selet h3 {
+    padding: 0.2em 0em 0em 0em;
+    font-size: 1.7em;
+    float: none;
+}
+.price-selet h3 span {
+    color: #ef0404;
+    font-size: 31px;
+    margin-right: 5px;
+}
+.price-gd-bottom {
+    background: #fff;
+    text-align: center;
+    padding: 1.8em 0em 1em;
+}
+.price-gd-top img {
+    width: 100%;
+}
+.price-list ul li {
+    padding: 0.5em 0em;
+    font-size: 0.9em;
+    color: #2b2b2b;
+    display: inline-block;
+}
+.price-selet {
+    padding: 1em 0em;
+    text-align: center;
+    background: #fff;
+}
+.price-selet a {
+    font-size: 1.1em;
+    color: #fff;
+    display: block;
+}
+.price-selet a {
+    font-size: 0.9em;
+    color: #fff;
+    display: inline-block;
+    padding: 0.5em 2em;
+    background:#e7272d;
+    text-decoration: none;
+    border: 2px solid #e7272d;
+}
+.price-block {
+    box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.15);
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+}
+.price-block:hover,.w3layouts-pricing:hover,.w3-agileits-vpn-grid:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    z-index: 1;
+}
+/*--//rooms & rates --*/
