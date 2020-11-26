@@ -66,14 +66,14 @@ def login():
     if request.method == 'POST' :
         
         email = request.form['email']
-        password = request.form['password'].encode('utf-8')
+        password = request.form['password']
         cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cur.execute("SELECT * FROM admin WHERE email=%s", [email])
         admin = cur.fetchone()
         if admin is not None :
-            if bcrypt.hashpw(password, admin["password"].encode('utf-8')) == admin["password"].encode('utf-8'):
+            if password==admin['password']:
                 session['logged_in'] = True
-                session['username'] = admin['username']
+                session['username'] = admin['name']
                 session['email'] = admin['email']
                 return redirect(url_for('admin'))
             else:
