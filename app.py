@@ -20,7 +20,23 @@ mysql.init_app(app)
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * from single_ac")
+    sac = cur.fetchall()
+    cur.close()
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * from single_non_ac")
+    snac = cur.fetchall()
+    cur.close()
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * from double_ac")
+    dac = cur.fetchall()
+    cur.close()
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * from double_non_ac")
+    dnac = cur.fetchall()
+    cur.close()
+    return render_template('home.html',sac=sac,snac=snac,dac=dac,dnac=dnac)
 
 
 @app.route('/register', methods=['GET','POST'] )
@@ -69,7 +85,7 @@ def login():
                 session['email'] = user['email']
                 return redirect(url_for('home'))
             else:
-                 return "Invalid Login"
+                return "Invalid Login"
 
         else:
             return "Invalid Login"
@@ -87,8 +103,6 @@ def logout():
         return render_template('home.html')
 
  
-
-
 if __name__ == "__main__":
     SECRET_KEY = os.urandom(24) 
     app.secret_key = SECRET_KEY
