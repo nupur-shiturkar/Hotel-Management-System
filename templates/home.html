@@ -17,7 +17,6 @@
 	function hideURLbar() {
 		window.scrollTo(0, 1);
 	}
-	var room;
 </script>
 <script src="index.js"></script>
 <!--//meta tags ends here-->
@@ -69,7 +68,7 @@
 	</div>
 
 	<!-- ROOMS AND RATES -->
-
+{% if session['username'] %}
 	<div class="plans-section py-5" id="rooms">
 		<div class="container py-md-3">
 			<div class="w3-head-all mb-3">
@@ -105,13 +104,13 @@
 								<div class="price-selet">
 									{%if i['status']==0%}
 									<p class="card-text">Room Status: Available</p>
+									<a href="#appointment" class="scroll" onclick=book_appointment("{{i['room_no']}}","single_ac")>Book Now</a>
 									{%else%}
 									<p class="card-text">Room Status: Not Available</p>
+									<!-- <button disabled>Book Now</button> -->
+									<a type="button" disabled>Book Now</a>
 									{%endif%}
-									<!-- <script>
-										var room={{i['room_no']}};
-									</script> -->
-									<a href="#appointment" class="scroll">Book Now</a>
+									
 								</div>
 							</div>
 						</div>
@@ -146,10 +145,11 @@
 								<div class="price-selet">
 									{%if i['status']==0%}
 									<p class="card-text">Room Status: Available</p>
+									<a href="#appointment" class="scroll" onclick=book_appointment("{{i['room_no']}}","single_non_ac")>Book Now</a>
 									{%else%}
 									<p class="card-text">Room Status: Not Available</p>
+									<a type="button" disabled>Book Now</a>
 									{%endif%}
-									<a href="#appointment" class="scroll">Book Now</a>
 								</div>
 							</div>
 						</div>
@@ -185,10 +185,11 @@
 								<div class="price-selet">
 									{%if i['status']==0%}
 									<p class="card-text">Room Status: Available</p>
+									<a href="#appointment" class="scroll" onclick=book_appointment("{{i['room_no']}}","double_ac")>Book Now</a>
 									{%else%}
 									<p class="card-text">Room Status: Not Available</p>
+									<a type="button" disabled>Book Now</a>
 									{%endif%}
-									<a href="#appointment" class="scroll">Book Now</a>
 								</div>
 							</div>
 						</div>
@@ -222,10 +223,11 @@
 								<div class="price-selet">
 									{%if i['status']==0%}
 									<p class="card-text">Room Status: Available</p>
+									<a href="#appointment" class="scroll" onclick=book_appointment("{{i['room_no']}}","Double_non_ac")>Book Now</a>
 									{%else%}
 									<p class="card-text">Room Status: Not Available</p>
+									<a type="button" disabled>Book Now</a>
 									{%endif%}
-									<a href="#appointment" class="scroll">Book Now</a>
 
 								</div>
 							</div>
@@ -241,15 +243,15 @@
 		<div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-4">
-				<form action="" method="post">
-					<div class="form-group" id="output">
+				<form action="/book" method="post">
+					<div class="form-group">
 						<label for="name">Room No:</label>
 
-						<input type="text" class="form-control" name="room_no" id="output" value="" disabled>
+						<input type="text" class="form-control" name="room_no" id="output" value="">
 					</div>
 					<div class="form-group">
 						<label for="email">Room Type:</label>
-						<input type="text" class="form-control" name="room_type" value="">
+						<input type="text" class="form-control" id="output1" name="room_type" value="">
 					</div>
 					<div class="form-group">
 						<label for="email">Holder Name:</label>
@@ -295,15 +297,20 @@
 						<input type="text" class="form-control" name="check_out_date" required="">
 					</div>
 					<br><br>
-					<button type="submit" name="book_room" class="btn btn-warning">Book Now</button>
+					<button type="submit" name="book_room" class="btn btn-warning" onclick='alert("Booked successfully");'>Book Now</button>
 				</form>
 			</div>
 			<div class="col-md-4"></div>
 		</div>
 	</section>
+	{%endif%}
+
 	<script>
-		function check() {
-			document.getElementById('output').innerHTML = room;
+		function book_appointment(room_clicked,typeOfRoom){
+			let input=document.getElementById("output")
+			input.value=room_clicked
+			let input1=document.getElementById("output1")
+			input1.value=typeOfRoom
 		}
 	</script>
 	{% endblock %}

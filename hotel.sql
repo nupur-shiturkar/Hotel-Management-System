@@ -68,10 +68,10 @@ CREATE TABLE `double_ac` (
 --
 
 INSERT INTO `double_ac` (`s_no`, `room_no`, `holder_name`, `holder_mobile`, `holder_address`, `child`, `adult`, `in_date`, `out_date`, `status`) VALUES
-(1, 251, 'b', '5454', 'gafg', 2, 1, '25-06-2020', '29-06-2020', 1),
-(2, 252, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
-(3, 253, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
-(4, 254, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+(1, 251, NULL, NULL, NULL, 0, 0, NULL, NULL, 0),
+(2, 252, NULL, NULL, NULL, 0, 0, NULL, NULL, 0),
+(3, 253, NULL, NULL, NULL, 0, 0, NULL, NULL, 0),
+(4, 254, NULL, NULL, NULL, 0, 0, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -97,10 +97,10 @@ CREATE TABLE `double_non_ac` (
 --
 
 INSERT INTO `double_non_ac` (`s_no`, `room_no`, `holder_name`, `holder_mobile`, `holder_address`, `child`, `adult`, `in_date`, `out_date`, `status`) VALUES
-(1, 201, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
-(2, 202, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
-(4, 203, 'Akshay', '8524569810', 'Address of akshay', 0, 2, '25-05-2020', '30-05-2020', 1),
-(5, 204, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+(1, 201, NULL, NULL, NULL, 0, 0, NULL, NULL, 0),
+(2, 202, NULL, NULL, NULL, 0, 0, NULL, NULL, 0),
+(4, 203, NULL, NULL, NULL, 0, 0, NULL, NULL, 0),
+(5, 204, NULL, NULL, NULL, 0, 0, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -126,10 +126,10 @@ CREATE TABLE `single_ac` (
 --
 
 INSERT INTO `single_ac` (`s_no`, `room_no`, `holder_name`, `holder_mobile`, `holder_address`, `child`, `adult`, `in_date`, `out_date`, `status`) VALUES
-(1, 151, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
-(2, 152, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
-(4, 153, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
-(5, 154, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+(1, 151, NULL, NULL, NULL, 0, 0, NULL, NULL, 0),
+(2, 152, NULL, NULL, NULL, 0, 0, NULL, NULL, 0),
+(4, 153, NULL, NULL, NULL, 0, 0, NULL, NULL, 0),
+(5, 154, NULL, NULL, NULL, 0, 0, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -140,14 +140,14 @@ INSERT INTO `single_ac` (`s_no`, `room_no`, `holder_name`, `holder_mobile`, `hol
 CREATE TABLE `single_non_ac` (
   `s_no` int(11) PRIMARY KEY,
   `room_no` int(11) NOT NULL,
-  `holder_name` varchar(100) NOT NULL,
-  `holder_mobile` varchar(100) NOT NULL,
-  `holder_address` varchar(250) NOT NULL,
-  `child` int(11) NOT NULL,
-  `adult` int(11) NOT NULL,
-  `in_date` varchar(100) NOT NULL,
-  `out_date` varchar(100) NOT NULL,
-  `status` int(11) NOT NULL
+  `holder_name` varchar(100) DEFAULT NULL,
+  `holder_mobile` varchar(100) DEFAULT NULL,
+  `holder_address` varchar(250) DEFAULT NULL,
+  `child` int(11) DEFAULT NULL,
+  `adult` int(11) DEFAULT NULL,
+  `in_date` varchar(100) DEFAULT NULL,
+  `out_date` varchar(100) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -155,10 +155,10 @@ CREATE TABLE `single_non_ac` (
 --
 
 INSERT INTO `single_non_ac` (`s_no`, `room_no`, `holder_name`, `holder_mobile`, `holder_address`, `child`, `adult`, `in_date`, `out_date`, `status`) VALUES
-(1, 101, '', '', '', 0, 0, '', '', 0),
-(2, 102, 'Pramod Sharma', '9878451245', 'xyz nagar , rajasthan', 2, 2, '29-04-2020', '31-04-2020', 1),
-(3, 103, '', '', '', 0, 0, '', '', 0),
-(4, 104, '', '', '', 0, 0, '', '', 0);
+(1, 101, NULL, NULL, NULL, 0, 0, NULL, NULL, 0),
+(2, 102, NULL, NULL, NULL, 0, 0, NULL, NULL, 0),
+(3, 103, NULL, NULL, NULL, 0, 0, NULL, NULL, 0),
+(4, 104, NULL, NULL, NULL, 0, 0, NULL, NULL, 0);
 
 --
 -- Indexes for dumped tables
