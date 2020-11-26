@@ -75,7 +75,7 @@ def login():
                 session['logged_in'] = True
                 session['username'] = admin['name']
                 session['email'] = admin['email']
-                return redirect(url_for('admin'))
+                return redirect(url_for('home'))
             else:
                 return "Invalid Login"
             
@@ -84,7 +84,7 @@ def login():
         cur.execute("SELECT * FROM accounts WHERE email=%s", [email] )
         user = cur.fetchone()
         cur.close()
-    
+        password=password.encode('utf-8')
         if user is not None:
             
             if bcrypt.hashpw(password, user["password"].encode('utf-8')) == user["password"].encode('utf-8'):
