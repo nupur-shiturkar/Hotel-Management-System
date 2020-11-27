@@ -16,7 +16,11 @@ body{
     text-align: center;
 }
 
-
+.chatButton{
+    position: fixed;
+    bottom: 0px;
+    right: 5px;
+}
 
 /* LOGIN PAGE */
 
@@ -427,8 +431,8 @@ a.view {
 
 .email-card{
     position: absolute;
-    top: 15rem;
-    right: 30rem;
+    top: 12rem;
+    right: 20rem;
     width: 650px;
     height: 250px;
     background-color: salmon;

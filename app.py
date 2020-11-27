@@ -1,9 +1,11 @@
 from flask import Flask, render_template, redirect, url_for, session, request, logging, flash
 from flask_mysqldb import MySQL, MySQLdb
+from flask_socketio import SocketIO, emit
 import bcrypt
 import os
 
 app=Flask(__name__,template_folder='templates')
+app.config[ 'SECRET_KEY' ] = 'jsbcfsbfjefebw237u3gdbdc'
 
 #MySQL Configurations
 app.config['MYSQL_HOST'] = 'localhost'
@@ -16,7 +18,7 @@ mysql = MySQL()
 mysql.init_app(app)
 
 
-
+socketio = SocketIO( app )
 
 @app.route('/')
 def home():
@@ -164,7 +166,20 @@ def cancel():
     if request.method == 'GET' :
         return render_template('cancel.html')
 
+@app.route('/chat', methods = ['GET', 'POST'] )
+def chat():
+    return render_template( './ChatApp.html' )
+
+def messageRecived():
+  print( 'message was received!!!' ) 
+
+@socketio.on( 'my event' )
+def handle_my_custom_event( json ):
+  print( 'recived my event: ' + str( json ) )
+  socketio.emit( 'my response', json, callback=messageRecived )
+
 if __name__ == "__main__":
     SECRET_KEY = os.urandom(24) 
     app.secret_key = SECRET_KEY
-    app.run(debug=True)
+    # app.run(port=9999,debug=True)
+    socketio.run( app, debug = True )
