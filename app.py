@@ -37,6 +37,7 @@ def home():
     dnac = cur.fetchall()
     cur.close()
     return render_template('home.html',sac=sac,snac=snac,dac=dac,dnac=dnac)
+    
 
 
 @app.route('/register', methods=['GET','POST'] )

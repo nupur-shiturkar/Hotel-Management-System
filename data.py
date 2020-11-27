@@ -40,8 +40,8 @@ plt.savefig('static/nightStayed.jpg',bbox_inches = 'tight')
 
 
 plt.figure(figsize=(12, 6))
-sns.countplot(x='hotel', data=df,palette='Pastel1')
-plt.title("Cancelation rates in the Hotel",fontweight="bold", size=20)
+sns.countplot(x='hotel',hue='is_canceled', data=df,palette='Pastel1')
+plt.title("Cancelation rates in City hotel and Resort hotel",fontweight="bold", size=20)
 plt.savefig('static/cancellation.jpg',bbox_inches = 'tight')
 
 plt.figure(figsize=(8, 6))
@@ -54,4 +54,17 @@ plt.figure(figsize=(12,6))
 sns.lineplot(x='arrival_date_month', y='adr',  data= df)
 plt.title("ADR wrt Month",fontweight="bold", size=20)
 plt.savefig('static/adrPerMonth.jpg',bbox_inches = 'tight')
+
+df['arrival_date'] = df['arrival_date_year'].astype(str) + '-' + df['arrival_date_month'] + '-' + df['arrival_date_day_of_month'].astype(str)
+df['arrival_date'] = df['arrival_date'].apply(pd.to_datetime)
+df['reservation_status_date'] = df['reservation_status_date'].apply(pd.to_datetime)
+
+cancelled_data = df[df['reservation_status'] == 'Canceled']
+cancelled_data['canc_to_arrival_days'] = cancelled_data['arrival_date'] - cancelled_data['reservation_status_date']
+cancelled_data['canc_to_arrival_days'] = cancelled_data['canc_to_arrival_days'].dt.days
+
+plt.figure(figsize=(14,6))
+sns.distplot(cancelled_data['canc_to_arrival_days'])
+plt.savefig('static/cancellationsPerWeek.jpg',bbox_inches = 'tight')
+
 
