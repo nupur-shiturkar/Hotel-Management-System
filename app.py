@@ -67,17 +67,25 @@ def login():
     if request.method == 'POST' :
         
         email = request.form['email']
-        password = request.form['password'].encode('utf-8')
-        if email=='rutu@gmail.com' and password=='rutu@123'.encode('utf-8'):
-            session['logged_in'] = True
-            session['username'] = 'Rutuja'
-            session['email'] = 'rutu@gmail.com'
-            return redirect(url_for('admin'))
+        password = request.form['password']
+        cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cur.execute("SELECT * FROM admin WHERE email=%s", [email])
+        admin = cur.fetchone()
+        if admin is not None :
+            if password==admin['password']:
+                session['logged_in'] = True
+                session['username'] = admin['name']
+                session['email'] = admin['email']
+                return redirect(url_for('home'))
+            else:
+                return "Invalid Login"
+            
+
         cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cur.execute("SELECT * FROM accounts WHERE email=%s", [email] )
         user = cur.fetchone()
         cur.close()
-    
+        password=password.encode('utf-8')
         if user is not None:
             
             if bcrypt.hashpw(password, user["password"].encode('utf-8')) == user["password"].encode('utf-8'):
@@ -103,7 +111,59 @@ def logout():
         session.clear()
         return render_template('home.html')
 
+@app.route('/book', methods=['GET','POST'] )
+def book():
+    if request.method == 'POST' :
+        room_no = request.form['room_no']
+        room_type = request.form['room_type']
+        holder_name = request.form['holder_name']
+        holder_mobile = request.form['holder_mobile']
+        holder_address = request.form['holder_address']
+        child_no = request.form['child_no']
+        adult_no = request.form['adult_no']
+        check_in_date = request.form['check_in_date']
+        check_out_date = request.form['check_out_date']
+        # status=1
+        cur = mysql.connection.cursor()
+        if room_type=='single_ac':
+            cur.execute("Update single_ac set holder_name=%s,holder_mobile=%s,holder_address=%s,child=%s,adult=%s,in_date=%s,out_date=%s,status=1 where room_no=%s",(holder_name,holder_mobile,holder_address,child_no,adult_no,check_in_date,check_out_date,room_no))
+        elif room_type=='single_non_ac':
+            cur.execute("Update single_non_ac set holder_name=%s,holder_mobile=%s,holder_address=%s,child=%s,adult=%s,in_date=%s,out_date=%s,status=1 where room_no=%s",(holder_name,holder_mobile,holder_address,child_no,adult_no,check_in_date,check_out_date,room_no))
+        elif room_type=='double_ac':
+            cur.execute("Update double_ac set holder_name=%s,holder_mobile=%s,holder_address=%s,child=%s,adult=%s,in_date=%s,out_date=%s,status=1 where room_no=%s",(holder_name,holder_mobile,holder_address,child_no,adult_no,check_in_date,check_out_date,room_no))
+        else:
+            cur.execute("Update double_non_ac set holder_name=%s,holder_mobile=%s,holder_address=%s,child=%s,adult=%s,in_date=%s,out_date=%s,status=1 where room_no=%s",(holder_name,holder_mobile,holder_address,child_no,adult_no,check_in_date,check_out_date,room_no))
+        cur.execute("INSERT INTO bookings(name, email, room_no, room_type) VALUES(%s, %s, %s, %s)",(holder_name,session['email'],room_no,room_type))
+        # cur.execute("Update single_ac set holder_name=%s where room_no=%s",(holder_name,room_no))
+        mysql.connection.commit()
+        return redirect(url_for('home'))
  
+@app.route('/cancel', methods=['GET','POST'] )
+def cancel():
+    if request.method == 'POST' :
+        cur = mysql.connection.cursor()
+        email=request.form['email']
+        cur.execute("SELECT * FROM bookings WHERE email=%s", (email,))
+        user = cur.fetchone()
+        if user is not None:
+            if user['room_type']=='single_ac':   
+                cur.execute("Update single_ac set holder_name=%s,holder_mobile=%s,holder_address=%s,child=%s,adult=%s,in_date=%s,out_date=%s,status=0 where room_no=%s",(None,None,None,0,0,None,None,user['room_no']))           
+            elif user['room_type']=='single_non_ac':
+                cur.execute("Update single_non_ac set holder_name=%s,holder_mobile=%s,holder_address=%s,child=%s,adult=%s,in_date=%s,out_date=%s,status=0 where room_no=%s",(None,None,None,0,0,None,None,user['room_no']))            
+            elif user['room_type']=='double_ac':
+                cur.execute("Update double_ac set holder_name=%s,holder_mobile=%s,holder_address=%s,child=%s,adult=%s,in_date=%s,out_date=%s,status=0 where room_no=%s",(None,None,None,0,0,None,None,user['room_no']))
+            else:
+                cur.execute("Update double_non_ac set holder_name=%s,holder_mobile=%s,holder_address=%s,child=%s,adult=%s,in_date=%s,out_date=%s,status=0 where room_no=%s",(None,None,None,0,0,None,None,user['room_no']))
+            cur.execute("Delete from bookings where email=%s",(email,))
+            mysql.connection.commit()   
+            return redirect(url_for('home'))    
+        else:
+            return "No bookings yet."
+        cur.close()
+        
+    if request.method == 'GET' :
+        return render_template('cancel.html')
+
 if __name__ == "__main__":
     SECRET_KEY = os.urandom(24) 
     app.secret_key = SECRET_KEY
