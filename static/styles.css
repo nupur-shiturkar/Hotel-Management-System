@@ -109,6 +109,7 @@ body{
     margin-top: 15px;
     margin-left: 130px;
 
+
 }
 
 
@@ -161,6 +162,15 @@ ul.dropdown-menu a {
     bottom: -50%;
 }
 
+.nav-link-admin{
+    color:firebrick !important;
+    font-size: 20px;
+    margin: 0 .2em;
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    font-weight: bolder;
+    font-weight: 500;
+}
 
 /* SLIDER HOME PAGE */
 

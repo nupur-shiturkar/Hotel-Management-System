@@ -160,6 +160,21 @@ INSERT INTO `single_non_ac` (`s_no`, `room_no`, `holder_name`, `holder_mobile`, 
 (3, 103, NULL, NULL, NULL, 0, 0, NULL, NULL, 0),
 (4, 104, NULL, NULL, NULL, 0, 0, NULL, NULL, 0);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `single_non_ac`
+--
+
+CREATE TABLE `bookings`(
+  `s_no` int(11) PRIMARY KEY,
+  `name` varchar(100),
+  `email`	varchar(100),
+  `room_no` int(11),
+  `room_type` varchar(100)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 --
 -- Indexes for dumped tables
 --
