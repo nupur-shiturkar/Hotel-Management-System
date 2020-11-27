@@ -37,6 +37,7 @@ def home():
     dnac = cur.fetchall()
     cur.close()
     return render_template('home.html',sac=sac,snac=snac,dac=dac,dnac=dnac)
+    
 
 
 @app.route('/register', methods=['GET','POST'] )
@@ -59,7 +60,6 @@ def register():
         return redirect(url_for('home'))
     
 
-
 @app.route('/login', methods = ['GET', 'POST'] )
 def login():
 
@@ -78,6 +78,7 @@ def login():
                 return redirect(url_for('home'))
             else:
                 return "Invalid Login"
+            
             
 
         cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)

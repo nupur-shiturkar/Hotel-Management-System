@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `accounts` (
       `id` int(11) NOT NULL AUTO_INCREMENT,
       `username` varchar(50) NOT NULL,
-      `contact` int(10) NOT NULL ,
+      `contact` varchar(10) NOT NULL ,
       `email` varchar(100) NOT NULL,
       `password` varchar(255) NOT NULL,
       
@@ -159,6 +159,21 @@ INSERT INTO `single_non_ac` (`s_no`, `room_no`, `holder_name`, `holder_mobile`, 
 (2, 102, NULL, NULL, NULL, 0, 0, NULL, NULL, 0),
 (3, 103, NULL, NULL, NULL, 0, 0, NULL, NULL, 0),
 (4, 104, NULL, NULL, NULL, 0, 0, NULL, NULL, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `single_non_ac`
+--
+
+CREATE TABLE `bookings`(
+  `s_no` int(11) PRIMARY KEY,
+  `name` varchar(100),
+  `email`	varchar(100),
+  `room_no` int(11),
+  `room_type` varchar(100)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 --
 -- Indexes for dumped tables
