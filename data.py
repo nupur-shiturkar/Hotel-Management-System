@@ -65,6 +65,7 @@ cancelled_data['canc_to_arrival_days'] = cancelled_data['canc_to_arrival_days'].
 
 plt.figure(figsize=(14,6))
 sns.distplot(cancelled_data['canc_to_arrival_days'])
+plt.title("Distribution of days from cancellation to arrival",fontweight="bold", size=20)
 plt.savefig('static/cancellationsPerWeek.jpg',bbox_inches = 'tight')
 
 

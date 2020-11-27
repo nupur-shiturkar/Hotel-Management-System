@@ -1,14 +1,27 @@
-<html>
-    <head>
+{% extends 'base.html' %}
 
-    </head>
-    <body>
-        <form action="/cancel" method="POST">  
-            <h3 class="login_title">Email</h3>
-            <input type="text" class="email" placeholder="Email" name="email" id="email" >
+{% block head %}
+ 
+<title>Login page</title>
+<script>
+    function alertbox(){
+        alert('Logged-in successfully');
+    }
+</script>
+{% endblock %}
+
+{% block body %} 
+<img src="/static/ALYAL Hotel Lobby Design.jpg" height="100%" width="100%">
+<form action="/cancel" method="POST"> 
+    <div class="email-card">
+        <div class="cancellation-details">
+            <h3 class="login_title">Enter you email for booking cancellation.</h3>
+            <input type="text" class="email-for-cancellation" placeholder="Email" name="email" id="email" >
             <br>
-            <button type="submit" onclick='alert("Cancelled successfully");'>Cancel</button>
-    </form>
-    </body>
-
-</html>
+            <button class="cancel-button" type="submit" onclick='alert("Cancelled successfully");'>Cancel</button>
+        </div>
+        
+    </div> 
+    
+</form>        
+{% endblock %}
