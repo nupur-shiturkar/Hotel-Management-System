@@ -60,7 +60,6 @@ def register():
         return redirect(url_for('home'))
     
 
-
 @app.route('/login', methods = ['GET', 'POST'] )
 def login():
 
@@ -79,6 +78,7 @@ def login():
                 return redirect(url_for('home'))
             else:
                 return "Invalid Login"
+            
             
 
         cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
