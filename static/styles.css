@@ -24,8 +24,8 @@ body{
 
 .login-card{
     position: absolute;
-    top: 5rem;
-    right: 4rem;
+    top: 7rem;
+    right: 6.5rem;
     width: 322px;
     height: 500px;
     background-color: #FDE6FF;
@@ -59,21 +59,59 @@ body{
 }
 
 .register-button{
-    color: crimson;
     color: #fff !important;
 }
 
 
+
+
 /* REGISTRATION PAGE */
+
+.register-title{
+    margin-left: 60px;
+    margin-bottom: 20px; 
+    font-size: 30px;
+}
 
 .registration-page{
     background-image: url(../static/ser2.jpg) no-repeat 0px 0px;
     
 }
 
-.registration-details{
-    margin-top: 30px;
+.register-card{
+    position: absolute;
+    top: 7rem;
+    left: 7rem;
+    width: 400px;
+    height: 550px;
+    background-color: rgb(100, 80, 75);
+    border-radius: 20px;
 }
+
+.register-page-textbox{
+    margin-left: 30px;
+}
+
+.registration-details{
+    text-align: left;
+    color: #FDE6FF;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.container-signin{
+    padding-top: 30px;
+    text-align: center;
+    color: #FDE6FF;
+
+}
+.register-btn-register-page{
+    margin-top: 15px;
+    margin-left: 130px;
+
+}
+
+
 /* NAVIGATION */
 
 .top-nav {
@@ -368,4 +406,53 @@ a.view {
   .book_tabel_item .input-group {
     margin-bottom: 10px;
   }
+
+  
   /*// booking form */
+
+
+
+
+/* CANCEL BOOKING */
+
+.email-card{
+    position: absolute;
+    top: 15rem;
+    right: 30rem;
+    width: 650px;
+    height: 250px;
+    background-color: salmon;
+    border-radius: 20px;
+}
+
+.login-title{
+    text-align: center;
+}
+
+.email-for-cancellation{
+    margin-left: 180px;
+    padding: 5px 50px ;
+    text-align: center;
+}
+
+.cancel-button{
+    transform: scale(1.1);
+    margin-top: 30px;
+    margin-left: 290px;
+    
+}
+
+/* FOOTER */
+
+#footer{
+    
+    background-color: #fff;
+    color: firebrick;
+    padding: 7% 15%;
+    text-align: center;
+}
+
+.social-icon{
+    padding: 20px 10px;
+    transform: scale(1.5)
+}
