@@ -3,6 +3,8 @@ from flask_mysqldb import MySQL, MySQLdb
 from flask_socketio import SocketIO, emit
 import bcrypt
 import os
+from data import plots
+# plots()
 
 app=Flask(__name__,template_folder='templates')
 app.config[ 'SECRET_KEY' ] = 'jsbcfsbfjefebw237u3gdbdc'
