@@ -2,70 +2,70 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+def plots():
+       df=pd.read_csv("hotel_bookings.csv")
 
-df=pd.read_csv("hotel_bookings.csv")
+       df1=pd.read_csv("hotel_bookings.csv",usecols=[3,4,6,7,8,26,27])
 
-df1=pd.read_csv("hotel_bookings.csv",usecols=[3,4,6,7,8,26,27])
+       months = {'January':'01','February':'02','March':'03','April':'04','May':'05','June':'06','July':'07','August':'08','September':'09','October':'10','November':'11','December':'12'}
 
-months = {'January':'01','February':'02','March':'03','April':'04','May':'05','June':'06','July':'07','August':'08','September':'09','October':'10','November':'11','December':'12'}
+       df1['arrival_date_month'] = df['arrival_date_month'].apply(lambda x: months[x])
 
-df1['arrival_date_month'] = df['arrival_date_month'].apply(lambda x: months[x])
+       df1['arrival_date_month']=pd.to_numeric(df1.arrival_date_month)
+       df1['date']=pd.to_datetime((df1.arrival_date_year*10000+df1.arrival_date_month*100+df1.arrival_date_day_of_month).apply(str),format='%Y%m%d')
+       df1['weekdays']=df1['date'].dt.day_name()
+       df1=df1.drop(['arrival_date_year',
+              'arrival_date_month',
+              'arrival_date_day_of_month'],axis=1)
+       weekday_names=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+       weekday_counts=df1.groupby("weekdays").mean()
+       weekday_counts=weekday_counts.loc[weekday_names]
 
-df1['arrival_date_month']=pd.to_numeric(df1.arrival_date_month)
-df1['date']=pd.to_datetime((df1.arrival_date_year*10000+df1.arrival_date_month*100+df1.arrival_date_day_of_month).apply(str),format='%Y%m%d')
-df1['weekdays']=df1['date'].dt.day_name()
-df1=df1.drop(['arrival_date_year',
-       'arrival_date_month',
-       'arrival_date_day_of_month'],axis=1)
-weekday_names=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
-weekday_counts=df1.groupby("weekdays").mean()
-weekday_counts=weekday_counts.loc[weekday_names]
+       plt.figure(figsize=(8, 5))
+       plt.bar(weekday_names,weekday_counts['adr'],color=(0.3, 0.7, 0.6, 0.6))
+       plt.title('ADR per day',fontweight="bold", size=20)
+       plt.xlabel('Days', fontsize=14)
+       plt.ylabel('ADR', fontsize=14)
+       plt.savefig('static/adrPerday.jpg',bbox_inches = 'tight')
 
-plt.figure(figsize=(8, 5))
-plt.bar(weekday_names,weekday_counts['adr'],color=(0.3, 0.7, 0.6, 0.6))
-plt.title('ADR per day',fontweight="bold", size=20)
-plt.xlabel('Days', fontsize=14)
-plt.ylabel('ADR', fontsize=14)
-plt.savefig('static/adrPerday.jpg',bbox_inches = 'tight')
-
-stay={'weekend':df1.stays_in_weekend_nights.mean(),'weekdays':df1.stays_in_week_nights.mean()}
-keys = stay.keys()
-values = stay.values()
-plt.figure(figsize=(4, 3))
-plt.bar(keys, values,color=(0.5, 0.4, 0.6, 0.6),width=[0.3,0.3],ec="black",align='center')
-plt.title('Stays vs week time',fontweight="bold", size=15)
-plt.xlabel('Days', fontsize=10)
-plt.ylabel('Night Stays', fontsize=10)
-plt.savefig('static/nightStayed.jpg',bbox_inches = 'tight')
-
-
-plt.figure(figsize=(12, 6))
-sns.countplot(x='hotel',hue='is_canceled', data=df,palette='Pastel1')
-plt.title("Cancelation rates in City hotel and Resort hotel",fontweight="bold", size=20)
-plt.savefig('static/cancellation.jpg',bbox_inches = 'tight')
-
-plt.figure(figsize=(8, 6))
-sns.countplot(x='customer_type', data=df,palette='Pastel2',ec='black')
-plt.title("Customer types",fontweight="bold", size=20)
-plt.savefig('static/customers.jpg',bbox_inches = 'tight')
+       stay={'weekend':df1.stays_in_weekend_nights.mean(),'weekdays':df1.stays_in_week_nights.mean()}
+       keys = stay.keys()
+       values = stay.values()
+       plt.figure(figsize=(4, 3))
+       plt.bar(keys, values,color=(0.5, 0.4, 0.6, 0.6),width=[0.3,0.3],ec="black",align='center')
+       plt.title('Stays vs week time',fontweight="bold", size=15)
+       plt.xlabel('Days', fontsize=10)
+       plt.ylabel('Night Stays', fontsize=10)
+       plt.savefig('static/nightStayed.jpg',bbox_inches = 'tight')
 
 
-plt.figure(figsize=(12,6))
-sns.lineplot(x='arrival_date_month', y='adr',  data= df)
-plt.title("ADR wrt Month",fontweight="bold", size=20)
-plt.savefig('static/adrPerMonth.jpg',bbox_inches = 'tight')
+       plt.figure(figsize=(12, 6))
+       sns.countplot(x='hotel',hue='is_canceled', data=df,palette='Pastel1')
+       plt.title("Cancelation rates in City hotel and Resort hotel",fontweight="bold", size=20)
+       plt.savefig('static/cancellation.jpg',bbox_inches = 'tight')
 
-df['arrival_date'] = df['arrival_date_year'].astype(str) + '-' + df['arrival_date_month'] + '-' + df['arrival_date_day_of_month'].astype(str)
-df['arrival_date'] = df['arrival_date'].apply(pd.to_datetime)
-df['reservation_status_date'] = df['reservation_status_date'].apply(pd.to_datetime)
+       plt.figure(figsize=(8, 6))
+       sns.countplot(x='customer_type', data=df,palette='Pastel2',ec='black')
+       plt.title("Customer types",fontweight="bold", size=20)
+       plt.savefig('static/customers.jpg',bbox_inches = 'tight')
 
-cancelled_data = df[df['reservation_status'] == 'Canceled']
-cancelled_data['canc_to_arrival_days'] = cancelled_data['arrival_date'] - cancelled_data['reservation_status_date']
-cancelled_data['canc_to_arrival_days'] = cancelled_data['canc_to_arrival_days'].dt.days
 
-plt.figure(figsize=(14,6))
-sns.distplot(cancelled_data['canc_to_arrival_days'])
-plt.title("Distribution of days from cancellation to arrival",fontweight="bold", size=20)
-plt.savefig('static/cancellationsPerWeek.jpg',bbox_inches = 'tight')
+       plt.figure(figsize=(12,6))
+       sns.lineplot(x='arrival_date_month', y='adr',  data= df)
+       plt.title("ADR wrt Month",fontweight="bold", size=20)
+       plt.savefig('static/adrPerMonth.jpg',bbox_inches = 'tight')
+
+       df['arrival_date'] = df['arrival_date_year'].astype(str) + '-' + df['arrival_date_month'] + '-' + df['arrival_date_day_of_month'].astype(str)
+       df['arrival_date'] = df['arrival_date'].apply(pd.to_datetime)
+       df['reservation_status_date'] = df['reservation_status_date'].apply(pd.to_datetime)
+
+       cancelled_data = df[df['reservation_status'] == 'Canceled']
+       cancelled_data['canc_to_arrival_days'] = cancelled_data['arrival_date'] - cancelled_data['reservation_status_date']
+       cancelled_data['canc_to_arrival_days'] = cancelled_data['canc_to_arrival_days'].dt.days
+
+       plt.figure(figsize=(14,6))
+       sns.distplot(cancelled_data['canc_to_arrival_days'])
+       plt.title("Distribution of days from cancellation to arrival",fontweight="bold", size=20)
+       plt.savefig('static/cancellationsPerWeek.jpg',bbox_inches = 'tight')
 
 

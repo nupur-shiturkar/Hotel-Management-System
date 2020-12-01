@@ -34,7 +34,7 @@ CREATE TABLE `admin` (
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `mobile` int(11) NOT NULL
+  `mobile` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

@@ -16,6 +16,10 @@ body{
     text-align: center;
 }
 
+/* .text-uppercase{
+    padding-bottom: 300px;
+} */
+
 .chatButton{
     position: fixed;
     bottom: 0px;
@@ -179,7 +183,7 @@ ul.dropdown-menu a {
 /* SLIDER HOME PAGE */
 
 .slider_banner_info_w3ls {
-	padding-top: 24%;
+	padding-top: 20%;
 	width: 75%;
 }
 
