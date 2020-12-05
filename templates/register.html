@@ -18,34 +18,38 @@
       
       <label ><b>Name</b></label>
       <input class="register-page-textbox" type="text" placeholder="Enter Name" name="username" id="username" required>
-      <br>
+      <p class="validation">FirstName LastName</p>
+      <!-- <br> -->
 
       <label><b>Contact</b></label>
-      <input class="register-page-textbox" type="text" placeholder="Enter Contact" name="contact" id="contact" required>
-      <br>
+      <input class="register-page-textbox" type="text" placeholder="Enter Contact" name="contact" id="contact" pattern="\d{10}" required>
+      <p class="validation">Valid phone number of 10 digits</p>
+      <!-- <br> -->
 
       <label ><b>Email</b></label>
-      <input class="register-page-textbox" type="text" placeholder="Enter Email" name="email" id="email" required>
-      <br>
+      <input class="register-page-textbox" type="text" placeholder="Enter Email" name="email" id="email" pattern="((^[a-z]+[\.]*[0-9]*)@([\w]+)([\.])([a-z]{2,3}$))" required>
+      <p class="validation">Valid email eg. xyz@gmail.com</p>
+      <!-- <br> -->
   
       <label><b>Password</b></label>
       <input class="register-page-textbox" type="password" placeholder="Enter Password" name="password" id="password" required>
-      <br>
+      <p class="validation">at least 1 uppercase letter, 1 lowercase letter and 1 digit</p>
+      <!-- <br> -->
   
       <!--label for="psw-repeat"><b>Confirm Password</b></!--label>
       <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
       <br-->
-      <hr>
+      <!-- <hr> -->
   
         
         <button type="submit" class="register-btn-register-page btn btn-light sign-up-button" onclick = "alertbox()">Register</button>
-
+        <p><center>Already have an account? <a href="/login">Sign in</a>.</center></p>
     </div>
   
-    <div class="container-signin">
+    <!-- <div class="container-signin">
       <p>Already have an account? <a href="/login">Sign in</a>.</p>
     </div>
-  
+   -->
     
   </form>
 </div>

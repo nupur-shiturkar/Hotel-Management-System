@@ -147,7 +147,8 @@ def cancel():
     if request.method == 'POST' :
         cur = mysql.connection.cursor()
         email=request.form['email']
-        cur.execute("SELECT * FROM bookings WHERE email=%s", (email,))
+        room=request.form['room-no']
+        cur.execute("SELECT * FROM bookings WHERE email=%s and room_no=%s", (email,room))
         user = cur.fetchone()
         if user is not None:
             if user['room_type']=='single_ac':   
@@ -158,7 +159,7 @@ def cancel():
                 cur.execute("Update double_ac set holder_name=%s,holder_mobile=%s,holder_address=%s,child=%s,adult=%s,in_date=%s,out_date=%s,status=0 where room_no=%s",(None,None,None,0,0,None,None,user['room_no']))
             else:
                 cur.execute("Update double_non_ac set holder_name=%s,holder_mobile=%s,holder_address=%s,child=%s,adult=%s,in_date=%s,out_date=%s,status=0 where room_no=%s",(None,None,None,0,0,None,None,user['room_no']))
-            cur.execute("Delete from bookings where email=%s",(email,))
+            cur.execute("Delete from bookings where email=%s and room_no=%s", (email,room))
             mysql.connection.commit()   
             return redirect(url_for('home'))    
         else:

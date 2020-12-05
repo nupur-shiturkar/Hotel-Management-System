@@ -1,6 +1,17 @@
 body{
     font-family: 'Lucida Sans';
 }
+.register-page-textbox input:valid:focus{
+    border: 2px solid #38dd38;
+  }
+.register-page-textbox input:invalid:focus{
+    border: 2px solid rgb(243, 54, 54);
+  }
+.validation{
+    font-size:smaller;
+    color: #cfc9c9;
+    padding-left:80px;
+}
 
 .login-container{
     margin: 100px auto;
@@ -97,7 +108,8 @@ body{
 }
 
 .register-page-textbox{
-    margin-left: 30px;
+    position:absolute;
+    left:110px;
 }
 
 .registration-details{
