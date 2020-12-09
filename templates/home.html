@@ -272,10 +272,8 @@
 
 	<script>
 		function book_appointment(room_clicked,typeOfRoom){
-			let input=document.getElementById("output")
-			input.value=room_clicked
-			let input1=document.getElementById("output1")
-			input1.value=typeOfRoom
+			document.getElementById("output").value=room_clicked
+			document.getElementById("output1").value=typeOfRoom
 		}
 	</script>
 	{% endblock %}
